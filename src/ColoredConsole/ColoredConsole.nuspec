@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>ColoredConsole</id>
+    <!-- The version will be replaced by the build -->
+    <version>0.0.0</version>
+    <title>ColoredConsole</title>
+    <authors>Adam Ralph, ColoredConsole contributors</authors>
+    <description>Add some color to your console.</description>
+    <projectUrl>https://github.com/colored-console/colored-console</projectUrl>
+    <licenseUrl>https://github.com/colored-console/colored-console/blob/dev/license.txt</licenseUrl>
+    <copyright>Copyright (c) ColoredConsole contributors. (coloredconsole@gmail.com)</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+</package>

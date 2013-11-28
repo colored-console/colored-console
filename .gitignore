@@ -1,0 +1,14 @@
+bin
+obj
+
+*.suo
+*.user
+*.userprefs
+
+artifacts
+packages
+
+*.sln.ide
+
+/scriptcs
+/*.nupkg

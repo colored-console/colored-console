@@ -11,89 +11,89 @@ namespace ColoredConsole
     /// </summary>
     public static class StringExtensions
     {
-        public static ColorToken Colored(this string text, ConsoleColor? color = null)
+        public static ColorToken Color(this string text, ConsoleColor? color = null)
         {
             return new ColorToken(text, color);
         }
 
         public static ColorToken Black(this string text)
         {
-            return text.Colored(ConsoleColor.Black);
+            return text.Color(ConsoleColor.Black);
         }
 
         public static ColorToken Blue(this string text)
         {
-            return text.Colored(ConsoleColor.Blue);
+            return text.Color(ConsoleColor.Blue);
         }
 
         public static ColorToken Cyan(this string text)
         {
-            return text.Colored(ConsoleColor.Cyan);
+            return text.Color(ConsoleColor.Cyan);
         }
 
         public static ColorToken DarkBlue(this string text)
         {
-            return text.Colored(ConsoleColor.DarkBlue);
+            return text.Color(ConsoleColor.DarkBlue);
         }
 
         public static ColorToken DarkCyan(this string text)
         {
-            return text.Colored(ConsoleColor.DarkCyan);
+            return text.Color(ConsoleColor.DarkCyan);
         }
 
         public static ColorToken DarkGray(this string text)
         {
-            return text.Colored(ConsoleColor.DarkGray);
+            return text.Color(ConsoleColor.DarkGray);
         }
 
         public static ColorToken DarkGreen(this string text)
         {
-            return text.Colored(ConsoleColor.DarkGreen);
+            return text.Color(ConsoleColor.DarkGreen);
         }
 
         public static ColorToken DarkMagenta(this string text)
         {
-            return text.Colored(ConsoleColor.DarkMagenta);
+            return text.Color(ConsoleColor.DarkMagenta);
         }
 
         public static ColorToken DarkRed(this string text)
         {
-            return text.Colored(ConsoleColor.DarkRed);
+            return text.Color(ConsoleColor.DarkRed);
         }
 
         public static ColorToken DarkYellow(this string text)
         {
-            return text.Colored(ConsoleColor.DarkYellow);
+            return text.Color(ConsoleColor.DarkYellow);
         }
 
         public static ColorToken Gray(this string text)
         {
-            return text.Colored(ConsoleColor.Gray);
+            return text.Color(ConsoleColor.Gray);
         }
 
         public static ColorToken Green(this string text)
         {
-            return text.Colored(ConsoleColor.Green);
+            return text.Color(ConsoleColor.Green);
         }
 
         public static ColorToken Magenta(this string text)
         {
-            return text.Colored(ConsoleColor.Magenta);
+            return text.Color(ConsoleColor.Magenta);
         }
 
         public static ColorToken Red(this string text)
         {
-            return text.Colored(ConsoleColor.Red);
+            return text.Color(ConsoleColor.Red);
         }
 
         public static ColorToken White(this string text)
         {
-            return text.Colored(ConsoleColor.White);
+            return text.Color(ConsoleColor.White);
         }
 
         public static ColorToken Yellow(this string text)
         {
-            return text.Colored(ConsoleColor.Yellow);
+            return text.Color(ConsoleColor.Yellow);
         }
     }
 }

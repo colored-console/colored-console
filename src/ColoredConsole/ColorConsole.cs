@@ -41,17 +41,7 @@ namespace ColoredConsole
 
         public static void WriteLine(params ColorToken[] tokens)
         {
-            if (tokens == null)
-            {
-                return;
-            }
-
             WriteLine(new ColorText(tokens));
-        }
-
-        public static void WriteLine()
-        {
-            Console.WriteLine();
         }
     }
 }

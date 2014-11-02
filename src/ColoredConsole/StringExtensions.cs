@@ -11,7 +11,7 @@ namespace ColoredConsole
     /// </summary>
     public static class StringExtensions
     {
-        public static ColorToken Color(this string text, ConsoleColor? color = null)
+        public static ColorToken Color(this string text, ConsoleColor? color)
         {
             return new ColorToken(text, color);
         }

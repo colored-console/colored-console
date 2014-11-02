@@ -38,5 +38,10 @@ namespace ColoredConsole
                 Console.WriteLine();
             }
         }
+
+        public static void WriteLine(params ColorToken[] tokens)
+        {
+            WriteLine(new ColorText(tokens));
+        }
     }
 }

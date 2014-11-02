@@ -14,7 +14,7 @@ Our build server is kindly provided by [CodeBetter](http://codebetter.com/) and 
 ![YouTrack and TeamCity](http://www.jetbrains.com/img/banners/Codebetter300x250.png)
 ## Where can I get it
 
-ColoredConsole is available as a [NuGet package](https://nuget.org/packages/ColoredConsole/). For update notifications, follow [@adamralph](https://twitter.com/#!/adamralph).
+ColoredConsole is available as a [NuGet package](https://nuget.org/packages/ColoredConsole/). For update notifications, follow [@adamralph](https://twitter.com/#!/adamralph) and [@davetimmins](https://twitter.com/#!/davetimmins).
 
 To build manually, clone or fork this repository and see ['How to build'](https://github.com/colored-console/colored-console/blob/dev/how_to_build.md).
 

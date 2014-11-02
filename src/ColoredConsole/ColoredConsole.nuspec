@@ -5,7 +5,7 @@
     <!-- The version will be replaced by the build -->
     <version>0.0.0</version>
     <title>ColoredConsole</title>
-    <authors>Adam Ralph, ColoredConsole contributors</authors>
+    <authors>Adam Ralph, Dave Timmins, ColoredConsole contributors</authors>
     <description>Add some color to your console.</description>
     <projectUrl>https://github.com/colored-console/colored-console</projectUrl>
     <licenseUrl>https://github.com/colored-console/colored-console/blob/dev/license.txt</licenseUrl>

@@ -5,12 +5,18 @@
 namespace ColoredConsole
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Convenience extension methods for colorizing strings.
     /// </summary>
     public static class StringExtensions
     {
+        [SuppressMessage(
+            "Microsoft.Naming",
+            "CA1719:ParameterNamesShouldNotMatchMemberNames",
+            MessageId = "1#",
+            Justification = "By design.")]
         public static ColorToken Color(this string text, ConsoleColor? color)
         {
             return new ColorToken(text, color);

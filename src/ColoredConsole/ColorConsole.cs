@@ -16,17 +16,20 @@ namespace ColoredConsole
             {
                 foreach (var token in text.ToTokenArray())
                 {
-                    if (token.Color.HasValue)
+                    if (token.Color.HasValue || token.BackgroundColor.HasValue)
                     {
                         var originalColor = Console.ForegroundColor;
-                        Console.ForegroundColor = token.Color.Value;
+                        var originalBackgroundColor = Console.BackgroundColor;
                         try
                         {
+                            Console.ForegroundColor = token.Color ?? originalColor;
+                            Console.BackgroundColor = token.BackgroundColor ?? originalBackgroundColor;
                             Console.Write(token);
                         }
                         finally
                         {
                             Console.ForegroundColor = originalColor;
+                            Console.BackgroundColor = originalBackgroundColor;
                         }
                     }
                     else

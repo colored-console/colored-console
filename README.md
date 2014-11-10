@@ -2,7 +2,7 @@
 
 Add some color to your console.
 
-[![Build Status](http://teamcity.codebetter.com/app/rest/builds/buildType:%28id:Bau_ColoredConsole%29/statusIcon)](http://teamcity.codebetter.com/viewType.html?buildTypeId=Bau_ColoredConsole&guest=1) [![Build Status](https://travis-ci.org/colored-console/colored-console.png?branch=dev)](https://travis-ci.org/colored-console/colored-console) [![Gitter chat](https://badges.gitter.im/colored-console/colored-console.png)](https://gitter.im/colored-console/colored-console) [![NuGet Status](http://img.shields.io/badge/NuGet-0.1.0~beta-blue.svg?style=flat)](https://www.nuget.org/packages/ColoredConsole/)
+[![Build Status](http://teamcity.codebetter.com/app/rest/builds/buildType:%28id:Bau_ColoredConsole%29/statusIcon)](http://teamcity.codebetter.com/viewType.html?buildTypeId=Bau_ColoredConsole&guest=1) [![Build Status](https://travis-ci.org/colored-console/colored-console.png?branch=dev)](https://travis-ci.org/colored-console/colored-console) [![Gitter chat](https://badges.gitter.im/colored-console/colored-console.png)](https://gitter.im/colored-console/colored-console) [![NuGet Status](http://img.shields.io/nuget/v/ColoredConsole.svg?style=flat)](https://www.nuget.org/packages/ColoredConsole/)
 
 - [Quickstart](https://github.com/colored-console/colored-console/wiki/Quickstart)
 - [Wiki](https://github.com/colored-console/colored-console/wiki)

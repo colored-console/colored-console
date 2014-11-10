@@ -10,16 +10,23 @@ namespace ColoredConsole
     {
         private readonly string text;
         private readonly ConsoleColor? color;
+        private readonly ConsoleColor? backgroundColor;
 
         public ColorToken(string text)
-            : this(text, null)
+            : this(text, null, null)
         {
         }
 
         public ColorToken(string text, ConsoleColor? color)
+            : this(text, color, null)
+        {
+        }
+
+        public ColorToken(string text, ConsoleColor? color, ConsoleColor? backgroundColor)
         {
             this.text = text;
             this.color = color;
+            this.backgroundColor = backgroundColor;
         }
 
         public string Text
@@ -30,6 +37,11 @@ namespace ColoredConsole
         public ConsoleColor? Color
         {
             get { return this.color; }
+        }
+
+        public ConsoleColor? BackgroundColor
+        {
+            get { return this.backgroundColor; }
         }
 
         public static implicit operator ColorToken(string text)
@@ -49,7 +61,12 @@ namespace ColoredConsole
 
         public ColorToken Coalesce(ConsoleColor defaultColor)
         {
-            return new ColorToken(this.text, this.color ?? defaultColor);
+            return this.Coalesce(defaultColor, null);
+        }
+
+        public ColorToken Coalesce(ConsoleColor defaultColor, ConsoleColor? defaultBackgroundColor)
+        {
+            return new ColorToken(this.text, this.color ?? defaultColor, this.backgroundColor ?? defaultBackgroundColor);
         }
 
         public override string ToString()
@@ -71,7 +88,8 @@ namespace ColoredConsole
         {
             return
                 this.text == other.text &&
-                this.color == other.color;
+                this.color == other.color &&
+                this.backgroundColor == other.backgroundColor;
         }
     }
 }

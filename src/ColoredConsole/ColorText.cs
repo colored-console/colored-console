@@ -51,7 +51,7 @@ namespace ColoredConsole
             return this.Coalesce(color, null);
         }
 
-        public ColorText Coalesce(ConsoleColor color, ConsoleColor? backgroundColor)
+        public ColorText Coalesce(ConsoleColor? color, ConsoleColor? backgroundColor)
         {
             return new ColorText(this.tokens.Select(token => token.Coalesce(color, backgroundColor)).ToArray());
         }

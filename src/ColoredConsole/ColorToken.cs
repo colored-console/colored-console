@@ -64,7 +64,7 @@ namespace ColoredConsole
             return this.Coalesce(defaultColor, null);
         }
 
-        public ColorToken Coalesce(ConsoleColor defaultColor, ConsoleColor? defaultBackgroundColor)
+        public ColorToken Coalesce(ConsoleColor? defaultColor, ConsoleColor? defaultBackgroundColor)
         {
             return new ColorToken(this.text, this.color ?? defaultColor, this.backgroundColor ?? defaultBackgroundColor);
         }

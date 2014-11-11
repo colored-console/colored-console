@@ -10,7 +10,7 @@ namespace ColoredConsole
     {
         private static readonly object @lock = new object();
 
-        public static void WriteLine(ColorText text)
+        public static void Write(ColorText text)
         {
             lock (@lock)
             {
@@ -37,7 +37,19 @@ namespace ColoredConsole
                         Console.Write(token);
                     }
                 }
+            }
+        }
 
+        public static void Write(params ColorToken[] tokens)
+        {
+            Write(new ColorText(tokens));
+        }
+
+        public static void WriteLine(ColorText text)
+        {
+            lock (@lock)
+            {
+                Write(text);
                 Console.WriteLine();
             }
         }

@@ -10,7 +10,7 @@ namespace ColoredConsole
     using System.Linq;
 
     /// <summary>
-    /// Convenience extension methods for setting background colors.
+    /// Convenience extension methods for re-coloring instances of <see cref="ColorToken"/>.
     /// </summary>
     public static class ColorTokenExtensions
     {
@@ -26,11 +26,6 @@ namespace ColoredConsole
             return tokens.Select(token => token.Coalesce(color, backgroundColor)).ToArray();
         }
 
-        [SuppressMessage(
-            "Microsoft.Naming",
-            "CA1719:ParameterNamesShouldNotMatchMemberNames",
-            MessageId = "1#",
-            Justification = "By design.")]
         public static ColorToken On(this ColorToken token, ConsoleColor? backgroundColor)
         {
             return new ColorToken(token.Text, token.Color, backgroundColor);

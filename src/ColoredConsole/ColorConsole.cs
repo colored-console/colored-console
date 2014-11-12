@@ -12,6 +12,8 @@ namespace ColoredConsole
 
         public static void Write(ColorToken[] tokens)
         {
+            Guard.AgainstNullArgument("tokens", tokens);
+
             lock (@lock)
             {
                 foreach (var token in tokens)

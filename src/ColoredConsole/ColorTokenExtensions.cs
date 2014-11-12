@@ -5,13 +5,27 @@
 namespace ColoredConsole
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
 
     /// <summary>
     /// Convenience extension methods for setting background colors.
     /// </summary>
     public static class ColorTokenExtensions
     {
+        public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor color)
+        {
+            return tokens.Coalesce(color, null);
+        }
+
+        public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor? color, ConsoleColor? backgroundColor)
+        {
+            Guard.AgainstNullArgument("tokens", tokens);
+
+            return tokens.Select(token => token.Coalesce(color, backgroundColor)).ToArray();
+        }
+
         [SuppressMessage(
             "Microsoft.Naming",
             "CA1719:ParameterNamesShouldNotMatchMemberNames",

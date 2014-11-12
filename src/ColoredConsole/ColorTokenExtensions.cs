@@ -5,101 +5,200 @@
 namespace ColoredConsole
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
 
     /// <summary>
-    /// Convenience extension methods for setting background colors.
+    /// Convenience extension methods for re-coloring instances of <see cref="ColorToken"/>.
     /// </summary>
     public static class ColorTokenExtensions
     {
+        public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor color)
+        {
+            return tokens.Coalesce(color, null);
+        }
+
+        public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor? color, ConsoleColor? backgroundColor)
+        {
+            Guard.AgainstNullArgument("tokens", tokens);
+
+            return tokens.Select(token => token.Coalesce(color, backgroundColor)).ToArray();
+        }
+
+        public static ColorToken On(this ColorToken token, ConsoleColor? backgroundColor)
+        {
+            return new ColorToken(token.Text, token.Color, backgroundColor);
+        }
+
+        public static ColorToken OnBlack(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Black);
+        }
+
+        public static ColorToken OnBlue(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Blue);
+        }
+
+        public static ColorToken OnCyan(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Cyan);
+        }
+
+        public static ColorToken OnDarkBlue(this ColorToken token)
+        {
+            return token.On(ConsoleColor.DarkBlue);
+        }
+
+        public static ColorToken OnDarkCyan(this ColorToken token)
+        {
+            return token.On(ConsoleColor.DarkCyan);
+        }
+
+        public static ColorToken OnDarkGray(this ColorToken token)
+        {
+            return token.On(ConsoleColor.DarkGray);
+        }
+
+        public static ColorToken OnDarkGreen(this ColorToken token)
+        {
+            return token.On(ConsoleColor.DarkGreen);
+        }
+
+        public static ColorToken OnDarkMagenta(this ColorToken token)
+        {
+            return token.On(ConsoleColor.DarkMagenta);
+        }
+
+        public static ColorToken OnDarkRed(this ColorToken token)
+        {
+            return token.On(ConsoleColor.DarkRed);
+        }
+
+        public static ColorToken OnDarkYellow(this ColorToken token)
+        {
+            return token.On(ConsoleColor.DarkYellow);
+        }
+
+        public static ColorToken OnGray(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Gray);
+        }
+
+        public static ColorToken OnGreen(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Green);
+        }
+
+        public static ColorToken OnMagenta(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Magenta);
+        }
+
+        public static ColorToken OnRed(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Red);
+        }
+
+        public static ColorToken OnWhite(this ColorToken token)
+        {
+            return token.On(ConsoleColor.White);
+        }
+
+        public static ColorToken OnYellow(this ColorToken token)
+        {
+            return token.On(ConsoleColor.Yellow);
+        }
+
         [SuppressMessage(
             "Microsoft.Naming",
             "CA1719:ParameterNamesShouldNotMatchMemberNames",
             MessageId = "1#",
             Justification = "By design.")]
-        public static ColorToken BackgroundColor(this ColorToken token, ConsoleColor? backgroundColor)
+        public static ColorToken Color(this ColorToken token, ConsoleColor? color)
         {
-            return new ColorToken(token.Text, token.Color, backgroundColor);
+            return new ColorToken(token.Text, color, token.BackgroundColor);
         }
 
-        public static ColorToken BlackBackground(this ColorToken token)
+        public static ColorToken Black(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Black);
+            return token.Color(ConsoleColor.Black);
         }
 
-        public static ColorToken BlueBackground(this ColorToken token)
+        public static ColorToken Blue(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Blue);
+            return token.Color(ConsoleColor.Blue);
         }
 
-        public static ColorToken CyanBackground(this ColorToken token)
+        public static ColorToken Cyan(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Cyan);
+            return token.Color(ConsoleColor.Cyan);
         }
 
-        public static ColorToken DarkBlueBackground(this ColorToken token)
+        public static ColorToken DarkBlue(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.DarkBlue);
+            return token.Color(ConsoleColor.DarkBlue);
         }
 
-        public static ColorToken DarkCyanBackground(this ColorToken token)
+        public static ColorToken DarkCyan(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.DarkCyan);
+            return token.Color(ConsoleColor.DarkCyan);
         }
 
-        public static ColorToken DarkGrayBackground(this ColorToken token)
+        public static ColorToken DarkGray(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.DarkGray);
+            return token.Color(ConsoleColor.DarkGray);
         }
 
-        public static ColorToken DarkGreenBackground(this ColorToken token)
+        public static ColorToken DarkGreen(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.DarkGreen);
+            return token.Color(ConsoleColor.DarkGreen);
         }
 
-        public static ColorToken DarkMagentaBackground(this ColorToken token)
+        public static ColorToken DarkMagenta(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.DarkMagenta);
+            return token.Color(ConsoleColor.DarkMagenta);
         }
 
-        public static ColorToken DarkRedBackground(this ColorToken token)
+        public static ColorToken DarkRed(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.DarkRed);
+            return token.Color(ConsoleColor.DarkRed);
         }
 
-        public static ColorToken DarkYellowBackground(this ColorToken token)
+        public static ColorToken DarkYellow(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.DarkYellow);
+            return token.Color(ConsoleColor.DarkYellow);
         }
 
-        public static ColorToken GrayBackground(this ColorToken token)
+        public static ColorToken Gray(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Gray);
+            return token.Color(ConsoleColor.Gray);
         }
 
-        public static ColorToken GreenBackground(this ColorToken token)
+        public static ColorToken Green(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Green);
+            return token.Color(ConsoleColor.Green);
         }
 
-        public static ColorToken MagentaBackground(this ColorToken token)
+        public static ColorToken Magenta(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Magenta);
+            return token.Color(ConsoleColor.Magenta);
         }
 
-        public static ColorToken RedBackground(this ColorToken token)
+        public static ColorToken Red(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Red);
+            return token.Color(ConsoleColor.Red);
         }
 
-        public static ColorToken WhiteBackground(this ColorToken token)
+        public static ColorToken White(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.White);
+            return token.Color(ConsoleColor.White);
         }
 
-        public static ColorToken YellowBackground(this ColorToken token)
+        public static ColorToken Yellow(this ColorToken token)
         {
-            return token.BackgroundColor(ConsoleColor.Yellow);
+            return token.Color(ConsoleColor.Yellow);
         }
     }
 }

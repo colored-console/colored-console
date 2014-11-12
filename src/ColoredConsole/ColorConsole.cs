@@ -10,11 +10,13 @@ namespace ColoredConsole
     {
         private static readonly object @lock = new object();
 
-        public static void WriteLine(ColorText text)
+        public static void Write(ColorToken[] tokens)
         {
+            Guard.AgainstNullArgument("tokens", tokens);
+
             lock (@lock)
             {
-                foreach (var token in text.ToTokenArray())
+                foreach (var token in tokens)
                 {
                     if (token.Color.HasValue || token.BackgroundColor.HasValue)
                     {
@@ -37,14 +39,16 @@ namespace ColoredConsole
                         Console.Write(token);
                     }
                 }
-
-                Console.WriteLine();
             }
         }
 
         public static void WriteLine(params ColorToken[] tokens)
         {
-            WriteLine(new ColorText(tokens));
+            lock (@lock)
+            {
+                Write(tokens);
+                Console.WriteLine();
+            }
         }
     }
 }

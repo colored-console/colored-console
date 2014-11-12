@@ -10,7 +10,7 @@ namespace ColoredConsole
     using System.Linq;
 
     /// <summary>
-    /// Convenience extension methods for setting background colors.
+    /// Convenience extension methods for re-coloring instances of <see cref="ColorToken"/>.
     /// </summary>
     public static class ColorTokenExtensions
     {

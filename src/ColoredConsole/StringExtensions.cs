@@ -8,7 +8,7 @@ namespace ColoredConsole
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// Convenience extension methods for colorizing strings.
+    /// Convenience extension methods for coloring instances of <see cref="string"/>.
     /// </summary>
     public static class StringExtensions
     {

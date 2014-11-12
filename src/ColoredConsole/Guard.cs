@@ -1,3 +1,7 @@
+// <copyright file="Guard.cs" company="ColoredConsole contributors">
+//  Copyright (c) ColoredConsole contributors. (coloredconsole@gmail.com)
+// </copyright>
+
 namespace ColoredConsole
 {
     using System;

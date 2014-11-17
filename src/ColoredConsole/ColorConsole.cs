@@ -12,7 +12,10 @@ namespace ColoredConsole
 
         public static void Write(params ColorToken[] tokens)
         {
-            Guard.AgainstNullArgument("tokens", tokens);
+            if (tokens == null || tokens.Length == 0)
+            {
+                return;
+            }
 
             lock (@lock)
             {
@@ -26,7 +29,7 @@ namespace ColoredConsole
                         {
                             Console.ForegroundColor = token.Color ?? originalColor;
                             Console.BackgroundColor = token.BackgroundColor ?? originalBackgroundColor;
-                            Console.Write(token);
+                            Console.Write(token.Text);
                         }
                         finally
                         {
@@ -36,7 +39,7 @@ namespace ColoredConsole
                     }
                     else
                     {
-                        Console.Write(token);
+                        Console.Write(token.Text);
                     }
                 }
             }

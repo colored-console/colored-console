@@ -21,9 +21,7 @@ namespace ColoredConsole
 
         public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor? color, ConsoleColor? backgroundColor)
         {
-            Guard.AgainstNullArgument("tokens", tokens);
-
-            return tokens.Select(token => token.Coalesce(color, backgroundColor)).ToArray();
+            return tokens == null ? null : tokens.Select(token => token.Coalesce(color, backgroundColor)).ToArray();
         }
 
         public static ColorToken On(this ColorToken token, ConsoleColor? backgroundColor)

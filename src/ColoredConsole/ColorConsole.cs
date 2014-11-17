@@ -10,7 +10,7 @@ namespace ColoredConsole
     {
         private static readonly object @lock = new object();
 
-        public static void Write(ColorToken[] tokens)
+        public static void Write(params ColorToken[] tokens)
         {
             Guard.AgainstNullArgument("tokens", tokens);
 

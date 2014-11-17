@@ -12,7 +12,10 @@ namespace ColoredConsole
 
         public static void Write(params ColorToken[] tokens)
         {
-            Guard.AgainstNullArgument("tokens", tokens);
+            if (tokens == null)
+            {
+                return;
+            }
 
             lock (@lock)
             {

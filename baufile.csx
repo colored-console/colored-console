@@ -35,7 +35,7 @@ bau
         msb.Properties = new { Configuration = "Release" };
         msb.MaxCpuCount = -1;
         msb.NodeReuse = false;
-        msb.Verbosity = msBuildFileVerbosity;
+        msb.Verbosity = Verbosity.Minimal;
         msb.NoLogo = true;
         msb.FileLoggers.Add(
             new FileLogger
@@ -44,7 +44,7 @@ bau
                 {
                     PerformanceSummary = true,
                     Summary = true,
-                    Verbosity = Verbosity.Minimal,
+                    Verbosity = msBuildFileVerbosity,
                     LogFile = logs + "/clean.log",
                 }
             });
@@ -63,7 +63,7 @@ bau
         msb.Properties = new { Configuration = "Release" };
         msb.MaxCpuCount = -1;
         msb.NodeReuse = false;
-        msb.Verbosity = msBuildFileVerbosity;
+        msb.Verbosity = Verbosity.Minimal;
         msb.NoLogo = true;
         msb.FileLoggers.Add(
             new FileLogger
@@ -72,7 +72,7 @@ bau
                 {
                     PerformanceSummary = true,
                     Summary = true,
-                    Verbosity = Verbosity.Minimal,
+                    Verbosity = msBuildFileVerbosity,
                     LogFile = logs + "/build.log",
                 }
             });

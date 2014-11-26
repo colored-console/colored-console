@@ -1,5 +1,4 @@
 // parameters
-var ci = Environment.GetEnvironmentVariable("CI");
 var versionSuffix = Environment.GetEnvironmentVariable("VERSION_SUFFIX");
 var msBuildFileVerbosity = (Verbosity)Enum.Parse(typeof(Verbosity), Environment.GetEnvironmentVariable("MSBUILD_FILE_VERBOSITY") ?? "minimal", true);
 var nugetVerbosity = Environment.GetEnvironmentVariable("NUGET_VERBOSITY") ?? "quiet";
@@ -21,7 +20,7 @@ var packs = new[] { "src/ColoredConsole/ColoredConsole" };
 var bau = Require<Bau>();
 
 bau
-.Task("default").DependsOn(string.IsNullOrWhiteSpace(ci) ? new[] { "unit", "component", "pack" } : new[] { "unit", "component", "accept", "pack" })
+.Task("default").DependsOn(new[] { "unit", "component", "accept", "pack" })
 
 .Task("all").DependsOn("unit", "component", "accept", "pack")
 

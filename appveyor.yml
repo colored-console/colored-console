@@ -1,0 +1,39 @@
+# http://www.appveyor.com/docs/appveyor-yml
+
+# Set build version format here instead of in the admin panel.
+version: "0.5.0.{build}"
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    - master
+    - dev
+
+build_script:
+  - choco install ScriptCs
+  - setlocal
+  - set VERSION_SUFFIX=.%APPVEYOR_BUILD_NUMBER%-%APPVEYOR_REPO_COMMIT%
+  - C:\Users\appveyor\AppData\Local\scriptcs\scriptcs.exe baufile.csx
+  - endlocal
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+  - path: artifacts\output\*.nupkg
+    name: mygetpackage
+
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+
+# provider names are case-sensitive!
+deploy:
+    # Deploying to myget feed
+  - provider: NuGet
+    server: https://www.myget.org/F/coloredconsole/
+    api_key:
+      secure: TXdo8W04gLRJunta/6a+cpvXQp6Oq69M6Sk4q94qZ6rnoRkwMYG4O73XiJrsZf5I
+    artifact: mygetpackage

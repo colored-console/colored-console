@@ -15,14 +15,15 @@ var units = new[] { "src/test/ColoredConsole.Test.Unit/bin/Release/ColoredConsol
 var component = "src/test/ColoredConsole.Test.Component/bin/Release/ColoredConsole.Test.Component.dll";
 var acceptance = "src/test/ColoredConsole.Test.Acceptance/bin/Release/ColoredConsole.Test.Acceptance.dll";
 var packs = new[] { "src/ColoredConsole/ColoredConsole" };
+var appveyor = "appveyor.yml";
 
 // solution agnostic tasks
 var bau = Require<Bau>();
 
 bau
-.Task("default").DependsOn(new[] { "unit", "component", "accept", "pack" })
+.Task("default").DependsOn(new[] { "unit", "component", "accept", "pack", "appveyor" })
 
-.Task("all").DependsOn("unit", "component", "accept", "pack")
+.Task("all").DependsOn("unit", "component", "accept", "pack", "appveyor")
 
 .Task("logs").Do(() => CreateDirectory(logs))
 
@@ -99,13 +100,19 @@ bau
 
         try
         {
+            var versionText = version + versionSuffix;
+            if (versionText.Length > 20)
+            {
+                versionText = versionText.Substring(0, 20);
+            }
+
             foreach (var pack in packs)
             {
-                File.WriteAllText(pack + ".nuspec", File.ReadAllText(pack + ".nuspec").Replace("0.0.0", version + versionSuffix));
+                File.WriteAllText(pack + ".nuspec", File.ReadAllText(pack + ".nuspec").Replace("0.0.0", versionText));
 
                 var project = pack + ".csproj";
                 bau.CurrentTask.LogInfo("Packing '" + project + "'...");
-                
+
                 new Exec { Name = "pack " + project }
                     .Run(nugetCommand)
                     .With(
@@ -125,6 +132,18 @@ bau
                 File.Delete(pack + ".nuspec.original");
             }
         }
+    })
+
+.Task("appveyor").DependsOn("build", "clobber", "output", "pack").Do(() =>
+    {
+        var lines = File.ReadAllText(appveyor)
+            .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
+            .Select(line =>
+                line.Contains("version: ")
+                ? "version: \"" + version + (string.IsNullOrWhiteSpace(versionSuffix) ?  ".{build}\"" : versionSuffix + "\"")
+                : line
+            );
+        File.WriteAllText(appveyor, string.Join(Environment.NewLine, lines.ToArray()));
     })
 
 .Run();

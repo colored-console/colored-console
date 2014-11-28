@@ -13,7 +13,7 @@ branches:
 build_script:
   - choco install ScriptCs
   - setlocal
-  - set VERSION_SUFFIX=.%APPVEYOR_BUILD_NUMBER%-%APPVEYOR_REPO_COMMIT%
+  - set VERSION_SUFFIX=.%APPVEYOR_BUILD_NUMBER%
   - C:\Users\appveyor\AppData\Local\scriptcs\scriptcs.exe baufile.csx
   - endlocal
 

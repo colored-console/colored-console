@@ -71,7 +71,7 @@
   deploy:
     # Deploying to myget feed
     - provider: NuGet
-      server: https://www.myget.org/F/0b0e5c5f92fe4ccbba32eec8c0bb4c22/
+      server: https://www.myget.org/F/coloredconsole/
       api_key:
-        secure: UAYBSvPmTiXAgAzxVTG1XcQKqD6gkGVT5Y7zpVycpw86vd7U+G1e47ufZVLEDobt
+        secure: TXdo8W04gLRJunta/6a+cpvXQp6Oq69M6Sk4q94qZ6rnoRkwMYG4O73XiJrsZf5I
       artifact: mygetpackage

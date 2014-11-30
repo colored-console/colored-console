@@ -2,16 +2,12 @@
 
 Add some color to your console.
 
-[![Build Status](http://teamcity.codebetter.com/app/rest/builds/buildType:%28id:Bau_ColoredConsole%29/statusIcon)](http://teamcity.codebetter.com/viewType.html?buildTypeId=Bau_ColoredConsole&guest=1) [![Build Status](https://travis-ci.org/colored-console/colored-console.png?branch=dev)](https://travis-ci.org/colored-console/colored-console) [![Gitter chat](https://badges.gitter.im/colored-console/colored-console.png)](https://gitter.im/colored-console/colored-console) [![NuGet Status](http://img.shields.io/nuget/v/ColoredConsole.svg?style=flat)](https://www.nuget.org/packages/ColoredConsole/)
+[![Build status](https://ci.appveyor.com/api/projects/status/n2ce74m4nw4dxlab?svg=true)](https://ci.appveyor.com/project/colored-console/colored-console) [![Build Status](https://travis-ci.org/colored-console/colored-console.png?branch=dev)](https://travis-ci.org/colored-console/colored-console) [![Gitter chat](https://badges.gitter.im/colored-console/colored-console.png)](https://gitter.im/colored-console/colored-console) [![NuGet Status](http://img.shields.io/nuget/v/ColoredConsole.svg?style=flat)](https://www.nuget.org/packages/ColoredConsole/)
 
 - [Quickstart](https://github.com/colored-console/colored-console/wiki/Quickstart)
 - [Wiki](https://github.com/colored-console/colored-console/wiki)
 - [NuGet package](https://nuget.org/packages/ColoredConsole/ "ColoredConsole on Nuget")
 
-## Sponsors ##
-Our build server is kindly provided by [CodeBetter](http://codebetter.com/) and [JetBrains](http://www.jetbrains.com/).
-
-![YouTrack and TeamCity](http://www.jetbrains.com/img/banners/Codebetter300x250.png)
 ## Where can I get it
 
 ColoredConsole is available as a [NuGet package](https://nuget.org/packages/ColoredConsole/). For update notifications, follow [@adamralph](https://twitter.com/#!/adamralph) and [@davetimmins](https://twitter.com/#!/davetimmins).

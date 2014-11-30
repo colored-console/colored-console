@@ -92,38 +92,27 @@ bau
 
 .Task("pack").DependsOn("build", "clobber", "output").Do(() =>
     {
+        var versionText = version + versionSuffix;
+        if (versionText.Length > 20)
+        {
+            versionText = versionText.Substring(0, 20);
+        }
+
         foreach (var pack in packs)
         {
-            File.Copy(pack + ".nuspec", pack + ".nuspec.original", true);
-        }
+            var project = pack + ".csproj";
+            bau.CurrentTask.LogInfo("Packing '" + project + "'...");
 
-        try
-        {
-            foreach (var pack in packs)
-            {
-                File.WriteAllText(pack + ".nuspec", File.ReadAllText(pack + ".nuspec").Replace("0.0.0", version + versionSuffix));
-
-                var project = pack + ".csproj";
-                bau.CurrentTask.LogInfo("Packing '" + project + "'...");
-                
-                new Exec { Name = "pack " + project }
-                    .Run(nugetCommand)
-                    .With(
-                        "pack", project,
-                        "-OutputDirectory", output,
-                        "-Properties", "Configuration=Release",
-                        "-IncludeReferencedProjects",
-                        "-Verbosity " + nugetVerbosity)
-                    .Execute();
-            }
-        }
-        finally
-        {
-            foreach (var pack in packs)
-            {
-                File.Copy(pack + ".nuspec.original", pack + ".nuspec", true);
-                File.Delete(pack + ".nuspec.original");
-            }
+            new Exec { Name = "pack " + project }
+                .Run(nugetCommand)
+                .With(
+                    "pack", project,
+                    "-OutputDirectory", output,
+                    "-Properties", "Configuration=Release",
+                    "-IncludeReferencedProjects",
+                    "-Verbosity " + nugetVerbosity,
+                    "-Version", versionText)
+                .Execute();
         }
     })
 

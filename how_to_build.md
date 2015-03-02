@@ -6,33 +6,19 @@ You can also build with Visual Studio 2012 or later but you'll have to run the t
 
 *Don't be put off by the prerequisites!* It only takes a few minutes to set them up and only needs to be done once. If you haven't used Bau before then you're in for a real treat!
 
-## Windows
+After the build has completed, the build artifacts will be located in `artifacts`.
 
-### Prerequisites
+## Windows
 
 1. Ensure you have .NET framework 4.5 installed.
 
-1. Ensure you have [scriptcs](http://chocolatey.org/packages/ScriptCs) installed.
+1. Ensure you have [scriptcs 0.13.3 or later](http://chocolatey.org/packages/ScriptCs) installed.
 
-### Building
+1. Using a command prompt, navigate to your clone root folder and execute:
 
-Using a command prompt, navigate to your clone root folder and execute:
-
-`bau.bat`
-
-This executes the default build tasks. After the build has completed, the build artifacts will be located in `artifacts`.
-
-To run the acceptance tests (and all dependencies), execute:
-
-`bau.bat accept`
-
-To run *all* tasks, execute:
-
-`bau.bat all`
+    `build.bat`
 
 ## Linux
-
-### Prerequisites
 
 1. Ensure you have Mono development tools 3.0 or later installed.
 
@@ -42,10 +28,6 @@ To run *all* tasks, execute:
 
     `mozroots --import --sync`
 
-### Building
+1. Using a terminal, navigate to your clone root folder and execute:
 
-Using a terminal, navigate to your clone root folder and execute:
-
-`bash bau.sh`
-
-This executes the default build tasks. After the build has completed, the build artifacts will be located in `artifacts`.
+    `bash build.sh`

@@ -1,12 +1,12 @@
 // parameters
 var versionSuffix = Environment.GetEnvironmentVariable("VERSION_SUFFIX");
-var msBuildFileVerbosity = (Verbosity)Enum.Parse(typeof(Verbosity), Environment.GetEnvironmentVariable("MSBUILD_FILE_VERBOSITY") ?? "minimal", true);
+var msBuildFileVerbosity = (Verbosity)Enum.Parse(typeof(Verbosity), Environment.GetEnvironmentVariable("MSBUILD_FILE_VERBOSITY") ?? "detailed", true);
 var nugetVerbosity = Environment.GetEnvironmentVariable("NUGET_VERBOSITY") ?? "quiet";
 
 // solution specific variables
 var version = File.ReadAllText("src/CommonAssemblyInfo.cs").Split(new[] { "AssemblyInformationalVersion(\"" }, 2, StringSplitOptions.None).ElementAt(1).Split(new[] { '"' }).First();
-var nugetCommand = "packages/NuGet.CommandLine.2.8.2/tools/NuGet.exe";
-var xunitCommand = "packages/xunit.runners.1.9.2/tools/xunit.console.clr4.exe";
+var nugetCommand = "scriptcs_packages/NuGet.CommandLine.2.8.2/tools/NuGet.exe";
+var xunitCommand = "scriptcs_packages/xunit.runners.1.9.2/tools/xunit.console.clr4.exe";
 var solution = "src/ColoredConsole.sln";
 var output = "artifacts/output";
 var tests = "artifacts/tests";
@@ -20,9 +20,7 @@ var packs = new[] { "src/ColoredConsole/ColoredConsole" };
 var bau = Require<Bau>();
 
 bau
-.Task("default").DependsOn(new[] { "unit", "component", "accept", "pack" })
-
-.Task("all").DependsOn("unit", "component", "accept", "pack")
+.Task("default").DependsOn("unit", "component", "accept", "pack")
 
 .Task("logs").Do(() => CreateDirectory(logs))
 

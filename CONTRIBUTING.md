@@ -12,13 +12,9 @@ It is **not** necessary to raise an issue for non-functional changes, e.g. refac
 
 ## Tests
 
-All new features must be covered by acceptance tests in the `ColoredConsole.Test.Acceptance` project.
+All new features must be covered by acceptance tests. Acceptance should be worded as Given, When Then, (And, But) using natural language free of any implementation details.
 
-Component tests are left to your discretion and are often not required but sometimes the committers may ask you to add some to the `ColoredConsole.Test.Component` project before accepting the new feature.
-
-Both acceptance and component tests should be worded as Given, When Then, (And, But) using natural language free of any implementation details.
-
-Unit tests are usually not required but feel free to add them to the `ColoredConsole.Test.Unit` project. Unit tests should be structured as Arrange, Act and Assert steps, labelled with comments.
+Component and unit tests are left to your discretion and are often not required but sometimes the committers may ask you to add some before accepting the new feature. Component and unit tests should be structured as Arrange, Act and Assert steps, labelled with comments.
 
 ## Spaces not Tabs
 
@@ -42,7 +38,7 @@ Try and avoid introducing code analysis violations. The non-test projects have l
 
 ## Resharper Artifacts
 
-Please do not add Resharper suppressions to code using comments. You may tweak your local Resharper settings but do not commit these to the repo.
+Please do not add Resharper suppressions to code using comments. Changes to solution wide settings may be submitted in a pull request, in an isolated commit.
 
 ## Branches
 

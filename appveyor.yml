@@ -1,6 +1,6 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
-# configuration for "master" branch
+# master branch
 -
   branches:
     only:
@@ -8,70 +8,64 @@
 
   version: "{build}"
 
-  environment:
-    MSBUILD_FILE_VERBOSITY: detailed
-    CI: true
-
   install:
-    - choco install scriptcs
+    - choco install scriptcs -Version 0.13.3
 
   build_script:
-    - C:\Users\appveyor\AppData\Local\scriptcs\scriptcs.exe baufile.csx
+    - build.bat
 
-#---------------------------------#
-#      artifacts configuration    #
-#---------------------------------#
   artifacts:
     - path: artifacts\output\*.nupkg
-      name: nugetpackage
+      name: packages
     - path: artifacts\logs
     - path: artifacts\tests
 
-#---------------------------------#
-#     deployment configuration    #
-#---------------------------------#
-
-# provider names are case-sensitive!
   deploy:
-    # Deploying to NuGet feed
     - provider: NuGet
       api_key:
         secure: xW5RqeSB/bCnN2QC0d4rcmmQkxUwfpeRtMxUMA22JYaAf89OSaKZNUsmmxrw9S6Z
-      artifact: nugetpackage
+      artifact: packages
 
-# configuration for all other branches
+# dev branch
 -
+  branches:
+    only:
+      - dev
+
   version: "{build}"
 
-  environment:
-    MSBUILD_FILE_VERBOSITY: detailed
-    CI: true
-
   install:
-    - choco install scriptcs
+    - choco install scriptcs -Version 0.13.3
 
   build_script:
-    - set VERSION_SUFFIX=.%APPVEYOR_BUILD_NUMBER%-dev
-    - C:\Users\appveyor\AppData\Local\scriptcs\scriptcs.exe baufile.csx
+    - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%
+    - build.bat
 
-#---------------------------------#
-#      artifacts configuration    #
-#---------------------------------#
   artifacts:
     - path: artifacts\output\*.nupkg
-      name: mygetpackage
+      name: packages
     - path: artifacts\logs
     - path: artifacts\tests
 
-#---------------------------------#
-#     deployment configuration    #
-#---------------------------------#
-
-# provider names are case-sensitive!
   deploy:
-    # Deploying to myget feed
     - provider: NuGet
       server: https://www.myget.org/F/coloredconsole/
       api_key:
         secure: TXdo8W04gLRJunta/6a+cpvXQp6Oq69M6Sk4q94qZ6rnoRkwMYG4O73XiJrsZf5I
-      artifact: mygetpackage
+      artifact: packages
+
+# all other branches
+-
+  version: "{build}"
+
+  install:
+    - choco install scriptcs -Version 0.13.3
+
+  build_script:
+    - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%
+    - build.bat
+
+  artifacts:
+    - path: artifacts\output\*.nupkg
+    - path: artifacts\logs
+    - path: artifacts\tests

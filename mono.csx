@@ -1,6 +1,6 @@
 Require<Bau>()
 
-.Task("default").DependsOn("unit", "component", "accept")
+.Task("default").DependsOn("accept")
 
 .Task("logs").Do(() => CreateDirectory("./artifacts/logs"))
 
@@ -17,16 +17,6 @@ Require<Bau>()
     .With("./src/ColoredConsole.sln", "/target:Build", "/property:Configuration=Release", "/verbosity:normal", "/nologo"))
 
 .Task("tests").Do(() => CreateDirectory("./artifacts/tests"))
-
-.Xunit("unit").DependsOn("build", "tests").Do(xunit => xunit
-    .Use("./scriptcs_packages/xunit.runners.1.9.2/tools/xunit.console.clr4.exe")
-    .Run("./src/test/ColoredConsole.Test.Unit/bin/Release/ColoredConsole.Test.Unit.dll")
-    .Html().Xml())
-
-.Xunit("component").DependsOn("build", "tests").Do(xunit => xunit
-    .Use("./scriptcs_packages/xunit.runners.1.9.2/tools/xunit.console.clr4.exe")
-    .Run("./src/test/ColoredConsole.Test.Component/bin/Release/ColoredConsole.Test.Component.dll")
-    .Html().Xml())
 
 .Xunit("accept").DependsOn("build", "tests").Do(xunit => xunit
     .Use("./scriptcs_packages/xunit.runners.1.9.2/tools/xunit.console.clr4.exe")

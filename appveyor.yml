@@ -14,6 +14,8 @@
   build_script:
     - build.bat
 
+  test: off
+
   artifacts:
     - path: artifacts\output\*.nupkg
       name: packages
@@ -41,6 +43,8 @@
     - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%
     - build.bat
 
+  test: off
+
   artifacts:
     - path: artifacts\output\*.nupkg
       name: packages
@@ -64,6 +68,8 @@
   build_script:
     - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%
     - build.bat
+
+  test: off
 
   artifacts:
     - path: artifacts\output\*.nupkg

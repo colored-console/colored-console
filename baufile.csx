@@ -11,8 +11,6 @@ var solution = "src/ColoredConsole.sln";
 var output = "artifacts/output";
 var tests = "artifacts/tests";
 var logs = "artifacts/logs";
-var units = new[] { "src/test/ColoredConsole.Test.Unit/bin/Release/ColoredConsole.Test.Unit.dll" };
-var component = "src/test/ColoredConsole.Test.Component/bin/Release/ColoredConsole.Test.Component.dll";
 var acceptance = "src/test/ColoredConsole.Test.Acceptance/bin/Release/ColoredConsole.Test.Acceptance.dll";
 var packs = new[] { "src/ColoredConsole/ColoredConsole" };
 
@@ -20,7 +18,7 @@ var packs = new[] { "src/ColoredConsole/ColoredConsole" };
 var bau = Require<Bau>();
 
 bau
-.Task("default").DependsOn("unit", "component", "accept", "pack")
+.Task("default").DependsOn("accept", "pack")
 
 .Task("logs").Do(() => CreateDirectory(logs))
 
@@ -76,12 +74,6 @@ bau
     })
 
 .Task("tests").Do(() => CreateDirectory(tests))
-
-.Xunit("unit").DependsOn("build", "tests").Do(xunit => xunit
-    .Use(xunitCommand).Run(units).Html().Xml())
-
-.Xunit("component").DependsOn("build", "tests").Do(xunit => xunit
-    .Use(xunitCommand).Run(component).Html().Xml())
 
 .Xunit("accept").DependsOn("build", "tests").Do(xunit => xunit
     .Use(xunitCommand).Run(acceptance).Html().Xml())

@@ -10,7 +10,7 @@ Require<Bau>()
 
 .Exec("restore").Do(exec => exec
     .Run("mono")
-    .With("./scriptcs_packages/NuGet.CommandLine.2.8.2/tools/NuGet.exe", "restore", "src/ColoredConsole.sln"))
+    .With("./scriptcs_packages/NuGet.CommandLine.2.8.3/tools/NuGet.exe", "restore", "src/ColoredConsole.sln"))
 
 .Exec("build").DependsOn("clean", "restore", "logs").Do(exec => exec
     .Run("xbuild")

@@ -3,7 +3,7 @@
   <metadata>
     <id>ColoredConsole</id>
     <!-- The version will be replaced by the build -->
-    <version>0.0.0</version>
+    <version>$version$</version>
     <title>ColoredConsole</title>
     <authors>Adam Ralph, Dave Timmins, ColoredConsole contributors</authors>
     <description>Add some color to your console.</description>

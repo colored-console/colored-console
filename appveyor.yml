@@ -1,0 +1,77 @@
+# http://www.appveyor.com/docs/appveyor-yml
+
+# master branch
+-
+  branches:
+    only:
+      - master
+
+  version: "{build}"
+
+  install:
+    - choco install scriptcs -Version 0.13.3
+
+  build_script:
+    - build.bat
+
+  test: off
+
+  artifacts:
+    - path: artifacts\output\*.nupkg
+      name: packages
+    - path: artifacts\logs
+    - path: artifacts\tests
+
+  deploy:
+    - provider: NuGet
+      api_key:
+        secure: xW5RqeSB/bCnN2QC0d4rcmmQkxUwfpeRtMxUMA22JYaAf89OSaKZNUsmmxrw9S6Z
+      artifact: packages
+
+# dev branch
+-
+  branches:
+    only:
+      - dev
+
+  version: "{build}"
+
+  install:
+    - choco install scriptcs -Version 0.13.3
+
+  build_script:
+    - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%
+    - build.bat
+
+  test: off
+
+  artifacts:
+    - path: artifacts\output\*.nupkg
+      name: packages
+    - path: artifacts\logs
+    - path: artifacts\tests
+
+  deploy:
+    - provider: NuGet
+      server: https://www.myget.org/F/coloredconsole/
+      api_key:
+        secure: TXdo8W04gLRJunta/6a+cpvXQp6Oq69M6Sk4q94qZ6rnoRkwMYG4O73XiJrsZf5I
+      artifact: packages
+
+# all other branches
+-
+  version: "{build}"
+
+  install:
+    - choco install scriptcs -Version 0.13.3
+
+  build_script:
+    - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%
+    - build.bat
+
+  test: off
+
+  artifacts:
+    - path: artifacts\output\*.nupkg
+    - path: artifacts\logs
+    - path: artifacts\tests

@@ -4,11 +4,28 @@
 
 namespace ColoredConsole
 {
-    using System;
-
     public static class ColorConsole
     {
         private static readonly object @lock = new object();
+        private static IConsole console = new SystemConsole();
+
+        public static IConsole Console
+        {
+            get
+            {
+                return console;
+            }
+
+            set
+            {
+                Guard.AgainstNullArgument("value", value);
+
+                lock (@lock)
+                {
+                    console = value;
+                }
+            }
+        }
 
         public static void Write(params ColorToken[] tokens)
         {
@@ -23,23 +40,23 @@ namespace ColoredConsole
                 {
                     if (token.Color.HasValue || token.BackgroundColor.HasValue)
                     {
-                        var originalColor = Console.ForegroundColor;
-                        var originalBackgroundColor = Console.BackgroundColor;
+                        var originalColor = console.ForegroundColor;
+                        var originalBackgroundColor = console.BackgroundColor;
                         try
                         {
-                            Console.ForegroundColor = token.Color ?? originalColor;
-                            Console.BackgroundColor = token.BackgroundColor ?? originalBackgroundColor;
-                            Console.Write(token.Text);
+                            console.ForegroundColor = token.Color ?? originalColor;
+                            console.BackgroundColor = token.BackgroundColor ?? originalBackgroundColor;
+                            console.Write(token.Text);
                         }
                         finally
                         {
-                            Console.ForegroundColor = originalColor;
-                            Console.BackgroundColor = originalBackgroundColor;
+                            console.ForegroundColor = originalColor;
+                            console.BackgroundColor = originalBackgroundColor;
                         }
                     }
                     else
                     {
-                        Console.Write(token.Text);
+                        console.Write(token.Text);
                     }
                 }
             }
@@ -50,7 +67,7 @@ namespace ColoredConsole
             lock (@lock)
             {
                 Write(tokens);
-                Console.WriteLine();
+                console.WriteLine();
             }
         }
     }

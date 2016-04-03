@@ -14,14 +14,26 @@ namespace ColoredConsole
     /// </summary>
     public static class ColorTokenExtensions
     {
-        public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor color)
+        public static ColorToken[] Mask(this IEnumerable<ColorToken> tokens, ConsoleColor color)
         {
-            return tokens.Coalesce(color, null);
+            return tokens.Mask(color, null);
         }
 
+        public static ColorToken[] Mask(this IEnumerable<ColorToken> tokens, ConsoleColor? color, ConsoleColor? backgroundColor)
+        {
+            return tokens == null ? null : tokens.Select(token => token.Mask(color, backgroundColor)).ToArray();
+        }
+
+        [Obsolete("Coalesce() was deprecated in version 0.5.0 and will soon be removed. Use Mask() instead.")]
+        public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor color)
+        {
+            return tokens.Mask(color);
+        }
+
+        [Obsolete("Coalesce() was deprecated in version 0.5.0 and will soon be removed. Use Mask() instead.")]
         public static ColorToken[] Coalesce(this IEnumerable<ColorToken> tokens, ConsoleColor? color, ConsoleColor? backgroundColor)
         {
-            return tokens == null ? null : tokens.Select(token => token.Coalesce(color, backgroundColor)).ToArray();
+            return tokens.Mask(color, backgroundColor);
         }
 
         public static ColorToken On(this ColorToken token, ConsoleColor? backgroundColor)

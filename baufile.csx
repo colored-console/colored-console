@@ -24,7 +24,7 @@ bau
 
 .MSBuild("clean").DependsOn("logs").Do(msb =>
     {
-        msb.MSBuildVersion = "net45";
+        msb.MSBuildVersion = "vs14";
         msb.Solution = solution;
         msb.Targets = new[] { "Clean", };
         msb.Properties = new { Configuration = "Release" };
@@ -52,7 +52,7 @@ bau
 
 .MSBuild("build").DependsOn("clean", "restore", "logs").Do(msb =>
     {
-        msb.MSBuildVersion = "net45";
+        msb.MSBuildVersion = "vs14";
         msb.Solution = solution;
         msb.Targets = new[] { "Build", };
         msb.Properties = new { Configuration = "Release" };

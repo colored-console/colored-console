@@ -1,4 +1,4 @@
-﻿// <copyright file="CoalescingFeature.cs" company="ColoredConsole contributors">
+﻿// <copyright file="MaskingFeature.cs" company="ColoredConsole contributors">
 //  Copyright (c) ColoredConsole contributors. (coloredconsole@gmail.com)
 // </copyright>
 
@@ -11,10 +11,10 @@ namespace ColoredConsole.Test.Acceptance
     using FluentAssertions;
     using Xbehave;
 
-    public static class CoalescingFeature
+    public static class MaskingFeature
     {
         [Scenario]
-        public static void CoalescingColors(
+        public static void MaskingColors(
             TestConsole console, ColorToken[] input, ColorToken[] output)
         {
             "Given a console"
@@ -23,10 +23,8 @@ namespace ColoredConsole.Test.Acceptance
             "And the text 'Hello' in red, a space and 'world'"
                 .f(() => input = new[] { "Hello".Red(), " ", "world" });
 
-            "When I coalesce the text with blue"
-#pragma warning disable // Type or member is obsolete
-                .f(() => input = input.Coalesce(ConsoleColor.Blue));
-#pragma warning restore // Type or member is obsolete
+            "When I mask the text with blue"
+                .f(() => input = input.Mask(ConsoleColor.Blue));
 
             "When I write a line containing the text"
                 .f(() => ColorConsole.WriteLine(input));
@@ -56,7 +54,7 @@ namespace ColoredConsole.Test.Acceptance
         }
 
         [Scenario]
-        public static void CoalescingBackgroundColors(
+        public static void MaskingBackgroundColors(
             TestConsole console, ColorToken[] input, ColorToken[] output)
         {
             "Given a console"
@@ -65,10 +63,8 @@ namespace ColoredConsole.Test.Acceptance
             "And the text 'Hello' on red, a space and 'world'"
                 .f(() => input = new[] { "Hello".OnRed(), " ", "world".OnBlue() });
 
-            "When I coalesce the text with no color on blue"
-#pragma warning disable // Type or member is obsolete
-                .f(() => input = input.Coalesce(null, ConsoleColor.Blue));
-#pragma warning restore // Type or member is obsolete
+            "When I mask the text with no color on blue"
+                .f(() => input = input.Mask(null, ConsoleColor.Blue));
 
             "When I write a line containing the text"
                 .f(() => ColorConsole.WriteLine(input));
@@ -98,7 +94,7 @@ namespace ColoredConsole.Test.Acceptance
         }
 
         [Scenario]
-        public static void CoalescingColorsAndBackgroundColors(
+        public static void MaskingColorsAndBackgroundColors(
             TestConsole console, ColorToken[] input, ColorToken[] output)
         {
             "Given a console"
@@ -107,10 +103,8 @@ namespace ColoredConsole.Test.Acceptance
             "And the text 'Hello' in red on yellow, a space and 'world'"
                 .f(() => input = new[] { "Hello".Red().OnYellow(), " ", "world" });
 
-            "When I coalesce the text with blue on cyan"
-#pragma warning disable // Type or member is obsolete
-                .f(() => input = input.Coalesce(ConsoleColor.Blue, ConsoleColor.Cyan));
-#pragma warning restore // Type or member is obsolete
+            "When I mask the text with blue on cyan"
+                .f(() => input = input.Mask(ConsoleColor.Blue, ConsoleColor.Cyan));
 
             "When I write a line containing the text"
                 .f(() => ColorConsole.WriteLine(input));

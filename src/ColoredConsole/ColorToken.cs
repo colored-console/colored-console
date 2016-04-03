@@ -59,14 +59,26 @@ namespace ColoredConsole
             return !left.Equals(right);
         }
 
-        public ColorToken Coalesce(ConsoleColor defaultColor)
+        public ColorToken Mask(ConsoleColor defaultColor)
         {
-            return this.Coalesce(defaultColor, null);
+            return this.Mask(defaultColor, null);
         }
 
-        public ColorToken Coalesce(ConsoleColor? defaultColor, ConsoleColor? defaultBackgroundColor)
+        public ColorToken Mask(ConsoleColor? defaultColor, ConsoleColor? defaultBackgroundColor)
         {
             return new ColorToken(this.text, this.color ?? defaultColor, this.backgroundColor ?? defaultBackgroundColor);
+        }
+
+        [Obsolete("Coalesce() was deprecated in version 0.5.0 and will soon be removed. Use Mask() instead.")]
+        public ColorToken Coalesce(ConsoleColor defaultColor)
+        {
+            return this.Mask(defaultColor);
+        }
+
+        [Obsolete("Coalesce() was deprecated in version 0.5.0 and will soon be removed. Use Mask() instead.")]
+        public ColorToken Coalesce(ConsoleColor? defaultColor, ConsoleColor? defaultBackgroundColor)
+        {
+            return this.Mask(defaultColor, defaultBackgroundColor);
         }
 
         public override string ToString()

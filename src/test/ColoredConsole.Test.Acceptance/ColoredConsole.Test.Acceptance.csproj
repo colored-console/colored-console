@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MaskingFeature.cs" />
-    <Compile Include="CoalescingFeature.cs" />
     <Compile Include="ColorConsoleFeature.cs" />
     <Compile Include="Support\TestConsole.cs" />
   </ItemGroup>

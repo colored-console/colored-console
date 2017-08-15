@@ -2,13 +2,11 @@
 //  Copyright (c) ColoredConsole contributors. (coloredconsole@gmail.com)
 // </copyright>
 
-using System.Collections;
-using System.Linq;
-
 namespace ColoredConsole
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
 
     /// <summary>
     /// Convenience extension methods for coloring instances of <see cref="string"/>.
@@ -27,14 +25,13 @@ namespace ColoredConsole
 
         /// <summary>
         /// Parses the text changing the colors based on color tokens @COLOR@ in the string.
-        /// Example:
-        /// 
-        /// "@BLUE@This is blue @RED@This is Red @GREEN@This is Green @WHITE@Etc."
+        /// Example: 
+        /// "@BLUE@This is blue @RED@This is Red @GREEN@This is Green @WHITE@Etc.".
         /// </summary>
         /// <param name="text">The text.</param>
         /// <param name="initialColor">The initial color.</param>
-        /// <param name="tokenDelimiter">The color token delimiter (defaults to '@')</param>
-        /// <returns></returns>
+        /// <param name="tokenDelimiter">The color token delimiter (defaults to '@').</param>
+        /// <returns>Parsed ColorTokens array (always non-null).</returns>
         public static ColorToken[] ParseColor(this string text, ConsoleColor? initialColor = null, char tokenDelimiter = '@')
         {
             return new ParseColorString(tokenDelimiter).Parse(text, initialColor).ToArray();

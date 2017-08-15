@@ -1,12 +1,14 @@
-// ColoredConsole - Copyright (c) 2017 CaptiveAire
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+// <copyright file="ParseColorString.cs" company="ColoredConsole contributors">
+//  Copyright (c) ColoredConsole contributors. (coloredconsole@gmail.com)
+// </copyright>
 
 namespace ColoredConsole
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class ParseColorString
     {
         public ParseColorString(char tokenDelimiter = '@')
@@ -16,7 +18,43 @@ namespace ColoredConsole
 
         public char TokenDelimiter { get; }
 
-        IEnumerable<ColorCharacter> ParseAsCharacters(string input, ConsoleColor currentColor)
+        public IEnumerable<ColorToken> Parse(string input, ConsoleColor? initialForegroundColor = null)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                yield break;
+            }
+
+            ConsoleColor currentColor = initialForegroundColor ?? Console.ForegroundColor;
+
+            var characterArray = this.ParseAsCharacters(input, currentColor).ToList();
+            var buffer = new List<ColorCharacter>();
+
+            // tokenize...
+            foreach (var c in characterArray)
+            {
+                if (c.ForegroundColor != currentColor)
+                {
+                    if (buffer.Any())
+                    {
+                        yield return new ColorToken(new string(buffer.Select(s => s.Value).ToArray()), currentColor);
+
+                        buffer.Clear();
+                    }
+
+                    currentColor = c.ForegroundColor;
+                }
+
+                buffer.Add(c);
+            }
+
+            if (buffer.Any())
+            {
+                yield return new ColorToken(new string(buffer.Select(s => s.Value).ToArray()), currentColor);
+            }
+        }
+
+        private IEnumerable<ColorCharacter> ParseAsCharacters(string input, ConsoleColor currentColor)
         {
             bool inColor = false;
 
@@ -63,40 +101,6 @@ namespace ColoredConsole
             }
         }
 
-        public IEnumerable<ColorToken> Parse(string input, ConsoleColor? initialForegroundColor = null)
-        {
-            if (string.IsNullOrEmpty(input))
-                yield break;
-
-            ConsoleColor currentColor = initialForegroundColor ?? Console.ForegroundColor;
-
-            var characterArray = this.ParseAsCharacters(input, currentColor).ToList();
-            var buffer = new List<ColorCharacter>();
-
-            // tokenize...
-            foreach (var c in characterArray)
-            {
-                if (c.ForegroundColor != currentColor)
-                {
-                    if (buffer.Any())
-                    {
-                        yield return new ColorToken(new string(buffer.Select(s => s.Value).ToArray()), currentColor);
-
-                        buffer.Clear();
-                    }
-
-                    currentColor = c.ForegroundColor;
-                }
-
-                buffer.Add(c);
-            }
-
-            if (buffer.Any())
-            {
-                yield return new ColorToken(new string(buffer.Select(s => s.Value).ToArray()), currentColor);
-            }
-        }
-
         internal class ColorCharacter
         {
             internal ColorCharacter(char value, ConsoleColor foregroundColor)
@@ -106,6 +110,7 @@ namespace ColoredConsole
             }
 
             public char Value { get; set; }
+
             public ConsoleColor ForegroundColor { get; set; }
         }
     }

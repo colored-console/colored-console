@@ -25,8 +25,8 @@ namespace ColoredConsole
 
         /// <summary>
         /// Parses the text changing the colors based on color tokens @COLOR@ in the string.
-        /// Example: 
-        /// "@BLUE@This is blue @RED@This is Red @GREEN@This is Green @WHITE@Etc.".
+        /// Example:
+        /// "@BLUE@This is Blue @RED@This is Red @GREEN@This is Green @WHITE@Etc.".
         /// </summary>
         /// <param name="text">The text.</param>
         /// <param name="initialColor">The initial color.</param>

@@ -18,22 +18,22 @@ namespace ColoredConsole.Test.Acceptance
             TestConsole console, ColorToken[] input, ColorToken[] output)
         {
             "Given a console"
-                .f(c => console = new TestConsole(ConsoleColor.White, ConsoleColor.Black).Using(c));
+                .x(c => console = new TestConsole(ConsoleColor.White, ConsoleColor.Black).Using(c));
 
             "And the text 'Hello' in red, a space and 'world'"
-                .f(() => input = new[] { "Hello".Red(), " ", "world" });
+                .x(() => input = new[] { "Hello".Red(), " ", "world" });
 
             "When I mask the text with blue"
-                .f(() => input = input.Mask(ConsoleColor.Blue));
+                .x(() => input = input.Mask(ConsoleColor.Blue));
 
             "When I write a line containing the text"
-                .f(() => ColorConsole.WriteLine(input));
+                .x(() => ColorConsole.WriteLine(input));
 
             "And look at the console"
-                .f(() => output = console.Tokens.ToArray());
+                .x(() => output = console.Tokens.ToArray());
 
             "Then the console contains a line"
-                .f(() =>
+                .x(() =>
                 {
                     output.Length.Should().Be(
                         4, "there should be two tokens for the words, a token for the space and a token for the line ending");
@@ -42,7 +42,7 @@ namespace ColoredConsole.Test.Acceptance
                 });
 
             "And the line contains 'Hello' in red, a space in blue and 'world' in blue"
-                .f(() =>
+                .x(() =>
                 {
                     output[0].Text.Should().Be("Hello");
                     output[0].Color.Should().Be(ConsoleColor.Red);
@@ -58,22 +58,22 @@ namespace ColoredConsole.Test.Acceptance
             TestConsole console, ColorToken[] input, ColorToken[] output)
         {
             "Given a console"
-                .f(c => console = new TestConsole(ConsoleColor.White, ConsoleColor.Black).Using(c));
+                .x(c => console = new TestConsole(ConsoleColor.White, ConsoleColor.Black).Using(c));
 
             "And the text 'Hello' on red, a space and 'world'"
-                .f(() => input = new[] { "Hello".OnRed(), " ", "world".OnBlue() });
+                .x(() => input = new[] { "Hello".OnRed(), " ", "world".OnBlue() });
 
             "When I mask the text with no color on blue"
-                .f(() => input = input.Mask(null, ConsoleColor.Blue));
+                .x(() => input = input.Mask(null, ConsoleColor.Blue));
 
             "When I write a line containing the text"
-                .f(() => ColorConsole.WriteLine(input));
+                .x(() => ColorConsole.WriteLine(input));
 
             "And look at the console"
-                .f(() => output = console.Tokens.ToArray());
+                .x(() => output = console.Tokens.ToArray());
 
             "Then the console contains a line"
-                .f(() =>
+                .x(() =>
                 {
                     output.Length.Should().Be(
                         4, "there should be two tokens for the words, a token for the space and a token for the line ending");
@@ -82,7 +82,7 @@ namespace ColoredConsole.Test.Acceptance
                 });
 
             "And the line contains 'Hello' on red, a space on blue and 'world' on blue"
-                .f(() =>
+                .x(() =>
                 {
                     output[0].Text.Should().Be("Hello");
                     output[0].BackgroundColor.Should().Be(ConsoleColor.Red);
@@ -98,22 +98,22 @@ namespace ColoredConsole.Test.Acceptance
             TestConsole console, ColorToken[] input, ColorToken[] output)
         {
             "Given a console"
-                .f(c => console = new TestConsole(ConsoleColor.White, ConsoleColor.Black).Using(c));
+                .x(c => console = new TestConsole(ConsoleColor.White, ConsoleColor.Black).Using(c));
 
             "And the text 'Hello' in red on yellow, a space and 'world'"
-                .f(() => input = new[] { "Hello".Red().OnYellow(), " ", "world" });
+                .x(() => input = new[] { "Hello".Red().OnYellow(), " ", "world" });
 
             "When I mask the text with blue on cyan"
-                .f(() => input = input.Mask(ConsoleColor.Blue, ConsoleColor.Cyan));
+                .x(() => input = input.Mask(ConsoleColor.Blue, ConsoleColor.Cyan));
 
             "When I write a line containing the text"
-                .f(() => ColorConsole.WriteLine(input));
+                .x(() => ColorConsole.WriteLine(input));
 
             "And look at the console"
-                .f(() => output = console.Tokens.ToArray());
+                .x(() => output = console.Tokens.ToArray());
 
             "Then the console contains a line"
-                .f(() =>
+                .x(() =>
                 {
                     output.Length.Should().Be(
                         4, "there should be two tokens for the words, a token for the space and a token for the line ending");
@@ -122,7 +122,7 @@ namespace ColoredConsole.Test.Acceptance
                 });
 
             "And the line contains 'Hello' in red on yellow, a space and 'world' in blue on cyan"
-                .f(() =>
+                .x(() =>
                 {
                     output[0].Text.Should().Be("Hello");
                     output[0].Color.Should().Be(ConsoleColor.Red);

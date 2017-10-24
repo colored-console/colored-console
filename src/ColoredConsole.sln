@@ -1,11 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{4928A491-6E0E-4948-A9DD-F24A4A0AAC08}"
 	ProjectSection(SolutionItems) = preProject
-		ColoredConsole.Dictionary.xml = ColoredConsole.Dictionary.xml
 		ColoredConsole.ruleset = ColoredConsole.ruleset
 		ColoredConsole.Test.ruleset = ColoredConsole.Test.ruleset
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
@@ -19,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B32D81
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{28FDEE5B-453E-4977-A640-C8670DDC7258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColoredConsole", "ColoredConsole\ColoredConsole.csproj", "{C04DDB93-DF94-4A1D-BAEC-9258EA5C23FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColoredConsole", "ColoredConsole\ColoredConsole.csproj", "{C04DDB93-DF94-4A1D-BAEC-9258EA5C23FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColoredConsole.Test.Acceptance", "test\ColoredConsole.Test.Acceptance\ColoredConsole.Test.Acceptance.csproj", "{A247E398-D820-4D1F-A18E-26313776CEDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ColoredConsole.Test.Acceptance", "test\ColoredConsole.Test.Acceptance\ColoredConsole.Test.Acceptance.csproj", "{A247E398-D820-4D1F-A18E-26313776CEDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,5 +42,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A247E398-D820-4D1F-A18E-26313776CEDC} = {28FDEE5B-453E-4977-A640-C8670DDC7258}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C00770D-0ED5-4CE4-ADCB-01459F4AC79E}
 	EndGlobalSection
 EndGlobal

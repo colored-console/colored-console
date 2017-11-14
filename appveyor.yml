@@ -9,7 +9,7 @@
   version: "{build}"
 
   install:
-    - choco install scriptcs -Version 0.13.3
+    - choco install scriptcs -Version 0.17.1
 
   build_script:
     - build.bat
@@ -37,7 +37,7 @@
   version: "{build}"
 
   install:
-    - choco install scriptcs -Version 0.13.3
+    - choco install scriptcs -Version 0.17.1
 
   build_script:
     - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%
@@ -63,7 +63,7 @@
   version: "{build}"
 
   install:
-    - choco install scriptcs -Version 0.13.3
+    - choco install scriptcs -Version 0.17.1
 
   build_script:
     - SET VERSION_SUFFIX=-%APPVEYOR_REPO_BRANCH%%APPVEYOR_BUILD_NUMBER%

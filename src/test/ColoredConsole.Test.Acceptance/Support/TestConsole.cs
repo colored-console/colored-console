@@ -2,6 +2,7 @@
 //  Copyright (c) ColoredConsole contributors. (coloredconsole@gmail.com)
 // </copyright>
 
+[assembly: Xunit.CollectionBehavior(DisableTestParallelization = true)]
 namespace ColoredConsole.Test.Acceptance.Support
 {
     using System;

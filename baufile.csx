@@ -49,7 +49,7 @@ bau
         foreach (var pack in packs)
         {
             bau.CurrentTask.LogInfo($"Packing '{pack}' into {output}...");
-            exec.Run("dotnet").With($"pack --no-build -c Release /nologo -o {output} /p:PackageVersion={version}").In(pack);
+            exec.Run("dotnet").With($"pack --no-build -c Release /nologo -o {output} /p:PackageVersion={versionText}").In(pack);
         }
     })
 .Run();

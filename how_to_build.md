@@ -6,7 +6,7 @@ You can also build with Visual Studio 2017 or later or with the .NET CLI.
 
 *Don't be put off by the prerequisites!* It only takes a few minutes to set them up and only needs to be done once. If you haven't used Bau before then you're in for a real treat!
 
-If you used the build scrits, after the build has completed, the build artifacts will be located in `artifacts`.
+If you used the build scripts, after the build has completed, the build artifacts will be located in `artifacts`.
 
 ## Windows
 

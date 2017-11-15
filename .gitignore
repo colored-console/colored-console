@@ -1,15 +1,4 @@
-bin
-obj
-
-*.suo
-*.user
-*.userprefs
-
 artifacts
-packages
 scriptcs_packages
-
-*.sln.ide
-
 /scriptcs
 /*.nupkg

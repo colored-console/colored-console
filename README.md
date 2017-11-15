@@ -24,4 +24,4 @@ Come and chat to fellow users and developers on [![Gitter chat](https://badges.g
 
 ## What do the version numbers mean? ##
 
-ColoredConsole uses [Semantic Versioning](http://semver.org/). The current release is 0.x which means 'initial development'.
+ColoredConsole uses [Semantic Versioning](http://semver.org/).

@@ -6,6 +6,7 @@ namespace ColoredConsole
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
 
     /// <summary>
     /// Convenience extension methods for coloring instances of <see cref="string"/>.
@@ -20,6 +21,20 @@ namespace ColoredConsole
         public static ColorToken Color(this string text, ConsoleColor? color)
         {
             return new ColorToken(text, color);
+        }
+
+        /// <summary>
+        /// Parses the text changing the colors based on color tokens @COLOR@ in the string.
+        /// Example:
+        /// "@BLUE@This is Blue @RED@This is Red @GREEN@This is Green @WHITE@Etc.".
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="initialColor">The initial color.</param>
+        /// <param name="tokenDelimiter">The color token delimiter (defaults to '@').</param>
+        /// <returns>Parsed ColorTokens array (always non-null).</returns>
+        public static ColorToken[] ParseColor(this string text, ConsoleColor? initialColor = null, char tokenDelimiter = '@')
+        {
+            return new ParseColorString(tokenDelimiter).Parse(text, initialColor).ToArray();
         }
 
         public static ColorToken Black(this string text)
